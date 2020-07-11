@@ -18,6 +18,9 @@ $(call inherit-product, device/xiaomi/raphael/msmnile.mk)
 # Inherit some common AOSiP stuff.
 $(call inherit-product, vendor/aosip/config/common.mk)
 
+# Inherit PSU
+$(call inherit-product-if-exists, vendor/google/psu/google-psu.mk)
+
 # Device identifier. This must come after all inclusions.
 PRODUCT_NAME := aosip_raphael
 PRODUCT_DEVICE := raphael
