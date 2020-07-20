@@ -171,7 +171,7 @@
     </array>
 
     <!-- Minimum screen brightness allowed by the power manager. -->
-    <integer name="config_screenBrightnessDim">6</integer>
+    <integer name="config_screenBrightnessDim">1</integer>
 
     <!-- Default screen brightness setting.
          Must be in the range specified by minimum and maximum. -->
@@ -758,9 +758,9 @@
 
     <!-- Vibrator pattern for feedback about touching a virtual key -->
     <integer-array name="config_virtualKeyVibePattern">
-        <item>18</item>
-        <item>30</item>
-        <item>60</item>
+        <item>28</item>
+        <item>45</item>
+        <item>80</item>
     </integer-array>
 
     <!-- Should the pinner service pin the Camera application? -->
@@ -812,9 +812,34 @@
 
     <!-- If true, the display will be shifted around in ambient mode. -->
     <bool name="config_enableBurnInProtection">true</bool>
-    <!-- Allow automatic adjusting of the screen brightness while dozing in low power state. -->
-    <bool name="config_allowAutoBrightnessWhileDozing">true</bool>
-    <!-- Shows the required view for in-display fingerprint -->
-    <bool name="config_supportsInDisplayFingerprint">true</bool>
+
+    <!-- Whether device ignores the RSSNR signal implementation -->
+    <bool name="config_ignoreRssnrSignalLevel">true</bool>
+
+    <!-- Enable dual LTE capability support-->
+    <bool name="config_dual_LTE_capability">true</bool>
+
+    <!-- Default value for proximity check on screen wake
+     NOTE ! - Enable for devices that have a fast response proximity sensor (ideally < 300ms)-->
+    <bool name="config_proximityCheckOnWake">true</bool>
+    <integer name="config_proximityCheckTimeout">100</integer>
+    <bool name="config_proximityCheckOnWakeEnabledByDefault">true</bool>
+
+    <!-- Display mode remapping table.
+         If the mode names returned by the backend do not match
+         the predefined and translated strings in the Settings
+         app, they can be remapped here. The format is
+         "oldname:newname", one per entry. -->
+    <string-array name="config_displayModeMappings" translatable="false">
+        <item>none:standard</item>
+        <item>smart_eyedefault:reading</item>
+        <item>GM_1:saturated</item>
+        <item>hal_srgb:srgb</item>
+        <item>smart_MC:dci_p3</item>
+    </string-array>
+
+    <!-- Should we filter any display modes which are unampped? -->
+    <bool name="config_filterDisplayModes">true</bool>
+
 </resources>
 
