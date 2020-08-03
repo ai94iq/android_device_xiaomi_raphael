@@ -1,5 +1,5 @@
 #
-# Copyright 2020 Project 404
+# Copyright 2019 The Paranoid Android Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -39,7 +39,7 @@ PRODUCT_COPY_FILES += \
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += \
     $(LOCAL_PATH)/overlay \
-    $(LOCAL_PATH)/overlay-p404
+    $(LOCAL_PATH)/overlay-aosip
 
 # Device uses high-density artwork where available
 PRODUCT_AAPT_CONFIG := normal
@@ -107,7 +107,7 @@ PRODUCT_COPY_FILES += \
     frameworks/av/services/audiopolicy/config/bluetooth_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/bluetooth_audio_policy_configuration.xml \
     frameworks/av/services/audiopolicy/config/usb_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/usb_audio_policy_configuration.xml \
     frameworks/av/services/audiopolicy/config/r_submix_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/r_submix_audio_policy_configuration.xml \
-    frameworks/av/services/audiopolicy/config/default_volume_tables.xml:$(TARGET_COPY_OUT_VENDOR)/etc/default_volume_tables.xml
+    frameworks/av/services/audiopolicy/config/default_volume_tables.xml:$(TARGET_COPY_OUT_VENDOR)/etc/default_volume_tables.xml \
 
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.audio.low_latency.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.audio.low_latency.xml \
@@ -121,10 +121,13 @@ PRODUCT_COPY_FILES += \
 # Bluetooth
 PRODUCT_PACKAGES += \
     android.hardware.bluetooth.audio@2.0-impl \
-    audio.bluetooth.default \
-    BluetoothQti \
-    libbthost_if \
-    libldacBT_dec \
+    com.qualcomm.qti.bluetooth_audio@1.0.vendor \
+    liba2dpoffload \
+    libbluetooth_qti \
+    libbtconfigstore \
+    libhdmiedid \
+    libhfp \
+    libsndmonitor \
     vendor.qti.hardware.bluetooth_audio@2.0.vendor \
     vendor.qti.hardware.btconfigstore@1.0.vendor
 
@@ -137,13 +140,23 @@ PRODUCT_COPY_FILES += \
 
 # Camera
 PRODUCT_PACKAGES += \
-    libdng_sdk.vendor \
+    libdng_sdk.vendor
+
+# Snap
+PRODUCT_PACKAGES += \
+    Snap
+
 
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.camera.flash-autofocus.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.camera.flash-autofocus.xml \
     frameworks/native/data/etc/android.hardware.camera.front.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.camera.front.xml \
     frameworks/native/data/etc/android.hardware.camera.full.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.camera.full.xml \
     frameworks/native/data/etc/android.hardware.camera.raw.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.camera.raw.xml
+
+# Charging
+PRODUCT_PACKAGES += \
+    charger_res_images \
+    product_charger_res_images
 
 # Codec2
 PRODUCT_PACKAGES += \
@@ -179,10 +192,7 @@ PRODUCT_PACKAGES += \
 
 # Fingerprint
 PRODUCT_PACKAGES += \
-    vendor.p404.biometrics.fingerprint.inscreen@1.0-service.xiaomi_raphael
-
-PRODUCT_COPY_FILES += \
-    vendor/404/configs/permissions/vendor.p404.biometrics.fingerprint.inscreen.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/vendor.p404.biometrics.fingerprint.inscreen.xml
+    vendor.lineage.biometrics.fingerprint.inscreen@1.0-service.xiaomi_raphael
 
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.fingerprint.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.fingerprint.xml
@@ -345,6 +355,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     PixelLiveWallpaperPrebuilt
 
+# OEM Unlock reporting
+PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
+    ro.oem_unlock_supported=0
+
 # Power
 PRODUCT_PACKAGES += \
     android.hardware.power@1.2-service.xiaomi_msmnile
@@ -377,6 +391,10 @@ PRODUCT_PACKAGES += \
 # Recovery
 PRODUCT_PACKAGES += \
     librecovery_updater_raphael
+
+# Remove packages
+PRODUCT_PACKAGES += \
+    RemovePackages
 
 # RenderScript
 PRODUCT_PACKAGES += \
