@@ -29,4 +29,7 @@ PRODUCT_BUILD_PROP_OVERRIDES += \
     PRODUCT_NAME="raphael" \
     TARGET_DEVICE="raphael"
 
+# Build Quiche-OSS
+export AOSIP_BUILDTYPE=Quiche-OSS
+
 PRODUCT_GMS_CLIENTID_BASE := android-xiaomi
