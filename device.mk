@@ -156,6 +156,10 @@ PRODUCT_PACKAGES += \
     DevicesOverlay \
     DevicesAndroidOverlay
 
+# Performance
+PRODUCT_PACKAGES += \
+    powerctl
+
 # Telephony
 PRODUCT_PACKAGES += \
     ims-ext-common \
