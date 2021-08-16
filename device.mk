@@ -203,3 +203,7 @@ PRODUCT_PACKAGES += \
 
 #PRODUCT_BOOT_JARS += \
     WfdCommon
+
+# Remove unwanted packages
+PRODUCT_PACKAGES += \
+    remove
