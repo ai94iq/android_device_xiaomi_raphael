@@ -6,17 +6,15 @@
 
 $(call inherit-product, device/xiaomi/raphael/device.mk)
 
-# Inherit some common AOSiP stuff.
-$(call inherit-product, vendor/aosip/config/common_full_phone.mk)
+# Inherit some common exTHmUI stuff.
+$(call inherit-product, vendor/exthm/config/common_full_phone.mk)
 
-# Inherit PSU
-$(call inherit-product-if-exists, vendor/google/psu/google-psu.mk)
 
 # Device identifier. This must come after all inclusions.
 PRODUCT_BRAND := Xiaomi
 PRODUCT_DEVICE := raphael
 PRODUCT_MANUFACTURER := Xiaomi
-PRODUCT_NAME := aosip_raphael
+PRODUCT_NAME := exthm_raphael
 
 BUILD_FINGERPRINT := "Xiaomi/raphaelin/raphaelin:9/PKQ1.181121.001/V10.3.3.0.PFKINXM:user/release-keys"
 
