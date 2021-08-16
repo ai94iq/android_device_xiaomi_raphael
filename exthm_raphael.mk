@@ -9,6 +9,8 @@ $(call inherit-product, device/xiaomi/raphael/device.mk)
 # Inherit some common Lineage stuff.
 $(call inherit-product, vendor/exthm/config/common_full_phone.mk)
 
+# Inherit some common Lawnchair
+$(call inherit-product, vendor/lawnchair/lawnchair.mk)
 
 # Device identifier. This must come after all inclusions.
 PRODUCT_BRAND := Xiaomi
